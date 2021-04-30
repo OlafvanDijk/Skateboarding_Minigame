@@ -11,6 +11,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float horizontalSpeed;
     [Tooltip("Forward Movement Speed of the Player.")]
     [SerializeField] private float verticalSpeed;
+    [Tooltip("Maximum amount of Velocity on the Z axis")]
+    [SerializeField] float maximumSpeed;
+    [Tooltip("Maximum Velocity that will be counted as falling. The higher this number the earlier the player will start to fall during a jump.")]
+    [SerializeField] float fallVelocity;
+
 
     [Header("Jumping")]
     [Tooltip("How much Force should be used to Jump.")]
@@ -52,15 +57,18 @@ public class PlayerMovement : MonoBehaviour
         {
             if (isJumping)
             {
-                if (playerRigidbody.velocity.y < 0)
+                if (playerRigidbody.velocity.y < fallVelocity)
                 {
-                    playerRigidbody.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+                    playerRigidbody.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.fixedDeltaTime;
                 }
             }
 
-            float vertical = verticalSpeed * Time.deltaTime;
-            float horizontal = rawInputX * horizontalSpeed * Time.deltaTime;
-            transform.Translate(new Vector3(horizontal, 0, vertical));
+            float vertical = verticalSpeed * Time.fixedDeltaTime;
+            float horizontal = rawInputX * horizontalSpeed * Time.fixedDeltaTime;
+
+            playerRigidbody.AddForce(new Vector3(horizontal, 0, 0), ForceMode.Force);
+
+            transform.Translate(new Vector3(0, 0, vertical));
         }
     }
 

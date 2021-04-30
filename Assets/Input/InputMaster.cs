@@ -53,7 +53,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Controller"",
+                    ""groups"": ""Controller;Keyboard & Mouse"",
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -182,10 +182,10 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 {
                     ""name"": ""up"",
                     ""id"": ""c8cfdd4f-2b93-4102-b571-ebb3da4a82da"",
-                    ""path"": ""<Joystick>/stick/up"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Controller"",
+                    ""groups"": ""Controller;Keyboard & Mouse"",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -193,10 +193,10 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 {
                     ""name"": ""down"",
                     ""id"": ""6dca3f03-1656-4659-a246-3e2d7a4ddb2a"",
-                    ""path"": ""<Joystick>/stick/down"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Controller"",
+                    ""groups"": ""Controller;Keyboard & Mouse"",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -204,10 +204,10 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 {
                     ""name"": ""left"",
                     ""id"": ""b6ac2cd5-9fda-4bb9-8934-90a61ff4afe9"",
-                    ""path"": ""<Joystick>/stick/left"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Controller"",
+                    ""groups"": ""Controller;Keyboard & Mouse"",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -215,10 +215,10 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 {
                     ""name"": ""right"",
                     ""id"": ""06adf869-e8df-4a2a-b1b2-87a1e4e7ecd2"",
-                    ""path"": ""<Joystick>/stick/right"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Controller"",
+                    ""groups"": ""Controller;Keyboard & Mouse"",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -239,6 +239,11 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 {
                     ""devicePath"": ""<Mouse>"",
                     ""isOptional"": false,
+                    ""isOR"": false
+                },
+                {
+                    ""devicePath"": ""<Gamepad>"",
+                    ""isOptional"": true,
                     ""isOR"": false
                 }
             ]

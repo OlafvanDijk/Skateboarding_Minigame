@@ -64,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
             }
 
             float vertical = verticalSpeed * Time.fixedDeltaTime;
-            float horizontal = rawInputX * horizontalSpeed * Time.fixedDeltaTime;
+            float horizontal = rawInputX * (horizontalSpeed * 100) * Time.fixedDeltaTime;
 
             playerRigidbody.AddForce(new Vector3(horizontal, 0, 0), ForceMode.Force);
 

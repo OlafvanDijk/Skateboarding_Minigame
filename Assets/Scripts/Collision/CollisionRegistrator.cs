@@ -4,12 +4,14 @@ using UnityEngine;
 using System;
 public class CollisionRegistrator : MonoBehaviour
 {
+    [Tooltip("List of CollisionHandlers with their corresponding Tags.")]
     [SerializeField] List<Handler> collisionHandlers;
 
+    #region Unity Methods
     /// <summary>
-    /// If a handler with the collision's tag exists call the HandleOnTriggerEnter function
+    /// If a handler with the collision's tag exists call the HandleOnTriggerEnter function.
     /// </summary>
-    /// <param name="collision">Object of Collision</param>
+    /// <param name="collision">Object of Collision.</param>
     private void OnTriggerEnter(Collider other)
     {
         CollisionHandler handler = FindHandler(other.tag);
@@ -20,9 +22,9 @@ public class CollisionRegistrator : MonoBehaviour
     }
 
     /// <summary>
-    /// If a handler with the collision's tag exists call the HandleOnCollisionEnter function
+    /// If a handler with the collision's tag exists call the HandleOnCollisionEnter function.
     /// </summary>
-    /// <param name="collision">Object of Collision</param>
+    /// <param name="collision">Object of Collision.</param>
     private void OnCollisionEnter(Collision collision)
     {
         CollisionHandler handler = FindHandler(collision.gameObject.tag);
@@ -31,7 +33,9 @@ public class CollisionRegistrator : MonoBehaviour
             handler.HandleOnCollisionEnter(collision.gameObject);
         }
     }
+    #endregion
 
+    #region Private Methods
     /// <summary>
     /// Find and return the corresponding handler.
     /// </summary>
@@ -52,6 +56,7 @@ public class CollisionRegistrator : MonoBehaviour
         }
         return null;
     }
+    #endregion
 }
 
 [Serializable]

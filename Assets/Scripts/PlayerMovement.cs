@@ -71,20 +71,6 @@ public class PlayerMovement : MonoBehaviour
             transform.Translate(new Vector3(0, 0, vertical));
         }
     }
-
-    /// <summary>
-    /// Stop jumping and set the rotaion of the player to equal the collision object when colliding with a ground object.
-    /// </summary>
-    /// <param name="collision">Object of collision.</param>
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isJumping = false;
-            Vector3 rotation = collision.transform.rotation.eulerAngles;
-            playerRigidbody.rotation = Quaternion.Euler(rotation.x, playerRigidbody.rotation.y, playerRigidbody.rotation.z);
-        }
-    }
     #endregion
 
     #region Public Methods
@@ -110,6 +96,11 @@ public class PlayerMovement : MonoBehaviour
             playerRigidbody.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
             isJumping = true;
         }
+    }
+
+    public void SetIsJumping(bool isJumping)
+    {
+        this.isJumping = isJumping;
     }
     #endregion
 

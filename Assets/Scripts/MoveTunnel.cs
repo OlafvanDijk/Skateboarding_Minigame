@@ -12,7 +12,7 @@ public class MoveTunnel : MonoBehaviour
     /// <summary>
     /// Rotate Tunnel if move is true
     /// </summary>
-    void Update()
+    private void Update()
     {
         if(move)
             transform.Rotate(new Vector3(0, rotationSpeed * Time.deltaTime, 0));

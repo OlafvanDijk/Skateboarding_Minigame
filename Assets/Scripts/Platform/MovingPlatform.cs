@@ -15,7 +15,7 @@ public class MovingPlatform : MonoBehaviour
     /// Moves the platform to the next available target.
     /// Destorys the script if there are no points to move between.
     /// </summary>
-    void Update()
+    private void Update()
     {
         CheckList();
 

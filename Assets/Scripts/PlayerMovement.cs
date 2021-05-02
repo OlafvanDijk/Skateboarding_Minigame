@@ -54,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
     /// Moves the player forward and horizontally
     /// Also quickens the fall during a jump
     /// </summary>
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         if (move)
         {
@@ -109,13 +109,16 @@ public class PlayerMovement : MonoBehaviour
     /// <param name="value">Object containing Callback Context</param>
     public void OnPressDuck(InputAction.CallbackContext value)
     {
-        if (value.performed)
+        if (move)
         {
-            SetDuckingParams(true);
-        }
-        else if (value.canceled)
-        {
-            SetDuckingParams(false);
+            if (value.performed)
+            {
+                SetDuckingParams(true);
+            }
+            else if (value.canceled)
+            {
+                SetDuckingParams(false);
+            }
         }
     }
     #endregion

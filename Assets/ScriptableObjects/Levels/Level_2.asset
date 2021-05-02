@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: Level_2
   m_EditorClassIdentifier: 
   platformList:
-  - platformObject: {fileID: 6171254182978483846, guid: c4c214bfe2a5e4143a39ba8a8cf8d154, type: 3}
-    spawnDistance: 50
-  - platformObject: {fileID: 8553999732409596234, guid: 31cfb3c794400fa42adf3e5978c081b0, type: 3}
-    spawnDistance: 50
   - platformObject: {fileID: 7310310578901578081, guid: 96fe4f4dae978e34e9e4eef0fb916c2d, type: 3}
     spawnDistance: 50
+  - platformObject: {fileID: 8553999732409596234, guid: 31cfb3c794400fa42adf3e5978c081b0, type: 3}
+    spawnDistance: 50
   - platformObject: {fileID: 6171254182978483846, guid: c4c214bfe2a5e4143a39ba8a8cf8d154, type: 3}
     spawnDistance: 50
   - platformObject: {fileID: 8553999732409596234, guid: 31cfb3c794400fa42adf3e5978c081b0, type: 3}
     spawnDistance: 50
+  - platformObject: {fileID: 4193634814983559807, guid: 721399b1ee9ab874da2b66e2a691a319, type: 3}
+    spawnDistance: 35
   - platformObject: {fileID: 6579159129968361393, guid: cb1792ecd968a3145b2b67ca537ed55e, type: 3}
     spawnDistance: 50

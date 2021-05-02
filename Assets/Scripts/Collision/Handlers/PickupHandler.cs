@@ -5,8 +5,11 @@ using TMPro;
 
 public class PickupHandler : CollisionHandler
 {
+    [Header("UI")]
     [Tooltip("Text displaying the current Points.")]
-    [SerializeField] private TextMeshProUGUI pointText;
+    [SerializeField] private TextMeshProUGUI overlayPointText;
+    [Tooltip("Text displaying the level Points.")]
+    [SerializeField] private TextMeshProUGUI finishPointText;
 
     private int currentPoints;
 
@@ -28,6 +31,11 @@ public class PickupHandler : CollisionHandler
         Pickup(pickupObject);
     }
 
+    public void OnFinish()
+    {
+        finishPointText.text = $"Score: {currentPoints}";
+    }
+
     /// <summary>
     /// HIde Pickup Object and add it's point to the current score
     /// </summary>
@@ -37,6 +45,6 @@ public class PickupHandler : CollisionHandler
         pickupObject.SetActive(false);
         Pickup pickup = pickupObject.GetComponent<Pickup>();
         currentPoints += pickup.points;
-        pointText.text = currentPoints.ToString();
+        overlayPointText.text = currentPoints.ToString();
     }
 }

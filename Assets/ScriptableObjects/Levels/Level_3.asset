@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 94333cbf35727d84286944a6881e0d4e, type: 3}
-  m_Name: Level_1
+  m_Name: Level_3
   m_EditorClassIdentifier: 
   platformList:
-  - platformObject: {fileID: 7310310578901578081, guid: 96fe4f4dae978e34e9e4eef0fb916c2d, type: 3}
+  - platformObject: {fileID: 6171254182978483846, guid: c4c214bfe2a5e4143a39ba8a8cf8d154, type: 3}
+    spawnDistance: 50
+  - platformObject: {fileID: 2607928640984625272, guid: 37110391c515396459ff0dc28a390f2f, type: 3}
     spawnDistance: 50
   - platformObject: {fileID: 8553999732409596234, guid: 31cfb3c794400fa42adf3e5978c081b0, type: 3}
     spawnDistance: 50
   - platformObject: {fileID: 6171254182978483846, guid: c4c214bfe2a5e4143a39ba8a8cf8d154, type: 3}
-    spawnDistance: 50
-  - platformObject: {fileID: 8553999732409596234, guid: 31cfb3c794400fa42adf3e5978c081b0, type: 3}
     spawnDistance: 50
   - platformObject: {fileID: 7310310578901578081, guid: 96fe4f4dae978e34e9e4eef0fb916c2d, type: 3}
     spawnDistance: 50

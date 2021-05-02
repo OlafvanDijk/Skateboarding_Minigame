@@ -46,6 +46,12 @@ public class PlatformSpawner : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Get the current level to load.
+    /// If all the levels have been finished load the first level again.
+    /// This is done because clearing player prefs in the editor is nice but in a build it is not.
+    /// </summary>
+    /// <returns></returns>
     private Level GetCurrentLevel()
     {
         if (levelList.levels == null || levelList.levels.Count <= 0)
@@ -57,7 +63,7 @@ public class PlatformSpawner : MonoBehaviour
         int index = PlayerPrefs.GetInt("LevelIndex");
         if (levelList.levels.Count <= index)
         {
-            index = levelList.levels.Count - 1;
+            index = 0;
         }
 
         return levelList.levels[index];

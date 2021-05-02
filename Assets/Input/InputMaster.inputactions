@@ -20,6 +20,14 @@
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Ducking",
+                    "type": "Button",
+                    "id": "72df59a4-cd5a-4abc-af3b-85298d1e3b65",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -209,6 +217,28 @@
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "4a926043-38c5-4ea0-9923-84149a49bb19",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse;Controller",
+                    "action": "Ducking",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "33f277e8-c467-4157-922d-3a94a65ef3ba",
+                    "path": "<Keyboard>/ctrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "Ducking",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

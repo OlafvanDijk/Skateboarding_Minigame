@@ -16,6 +16,9 @@ public class PlayerMovement : MonoBehaviour
     [Tooltip("Maximum Velocity that will be counted as falling. The higher this number the earlier the player will start to fall during a jump.")]
     [SerializeField] float fallVelocity;
 
+    [Header("Animations")]
+    [Tooltip("Reference to the Animator of the Player.")]
+    [SerializeField] private Animator animator;
 
     [Header("Jumping")]
     [Tooltip("How much Force should be used to Jump.")]
@@ -24,11 +27,19 @@ public class PlayerMovement : MonoBehaviour
     [Min(1.1f)]
     [SerializeField] private float fallMultiplier;
 
+    [Header("Ducking")]
+    [Tooltip("Collider of the player while standing.")]
+    [SerializeField] private Collider standingCollider;
+    [Tooltip("Collider of the player while ducking.")]
+    [SerializeField] private Collider duckingCollider;
+
     private Rigidbody playerRigidbody;
+
+    private float rawInputX;
 
     private bool move = false;
     private bool isJumping = false;
-    private float rawInputX;
+    private bool allowedToJump = true;
 
     #region Unity Methods
     /// <summary>
@@ -66,6 +77,8 @@ public class PlayerMovement : MonoBehaviour
     #endregion
 
     #region Public Methods
+
+    #region InputAction Methods
     /// <summary>
     /// Input Method that gets called when a new value is being sent by the InputSystem
     /// </summary>
@@ -83,12 +96,29 @@ public class PlayerMovement : MonoBehaviour
     /// <param name="value">Object containing Callback Context</param>
     public void OnPressJump(InputAction.CallbackContext value)
     {
-        if (move && value.started && !isJumping)
+        if (move && allowedToJump && value.started && !isJumping)
         {
             playerRigidbody.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
             isJumping = true;
         }
     }
+
+    /// <summary>
+    /// Let the player duck when the Duck Button is held down and stand when the button is no longer being held down.
+    /// </summary>
+    /// <param name="value">Object containing Callback Context</param>
+    public void OnPressDuck(InputAction.CallbackContext value)
+    {
+        if (value.performed)
+        {
+            SetDuckingParams(true);
+        }
+        else if (value.canceled)
+        {
+            SetDuckingParams(false);
+        }
+    }
+    #endregion
 
     /// <summary>
     /// Set the isJumping boolean. This method is currently used by the GroundHandler
@@ -107,6 +137,22 @@ public class PlayerMovement : MonoBehaviour
     public void CanPlayerMove(bool canMove)
     {
         move = canMove;
+    }
+    #endregion
+
+    #region Private Methods
+    /// <summary>
+    /// Let the player duck or stand based on the given value.
+    /// Set animator bool, colliders and if the player is allowed to jump.
+    /// </summary>
+    /// <param name="ducking">Should the player duck or stand.</param>
+    private void SetDuckingParams(bool ducking)
+    {
+        animator.SetBool("Ducking", ducking);
+        duckingCollider.enabled = ducking;
+
+        standingCollider.enabled = !ducking;
+        allowedToJump = !ducking;
     }
     #endregion
 }

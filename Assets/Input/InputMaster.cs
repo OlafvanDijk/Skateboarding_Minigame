@@ -33,6 +33,14 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Ducking"",
+                    ""type"": ""Button"",
+                    ""id"": ""72df59a4-cd5a-4abc-af3b-85298d1e3b65"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -222,6 +230,28 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4a926043-38c5-4ea0-9923-84149a49bb19"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse;Controller"",
+                    ""action"": ""Ducking"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""33f277e8-c467-4157-922d-3a94a65ef3ba"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Ducking"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -270,6 +300,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         m_PlayerMovement = asset.FindActionMap("PlayerMovement", throwIfNotFound: true);
         m_PlayerMovement_Jump = m_PlayerMovement.FindAction("Jump", throwIfNotFound: true);
         m_PlayerMovement_Movement = m_PlayerMovement.FindAction("Movement", throwIfNotFound: true);
+        m_PlayerMovement_Ducking = m_PlayerMovement.FindAction("Ducking", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -321,12 +352,14 @@ public class @InputMaster : IInputActionCollection, IDisposable
     private IPlayerMovementActions m_PlayerMovementActionsCallbackInterface;
     private readonly InputAction m_PlayerMovement_Jump;
     private readonly InputAction m_PlayerMovement_Movement;
+    private readonly InputAction m_PlayerMovement_Ducking;
     public struct PlayerMovementActions
     {
         private @InputMaster m_Wrapper;
         public PlayerMovementActions(@InputMaster wrapper) { m_Wrapper = wrapper; }
         public InputAction @Jump => m_Wrapper.m_PlayerMovement_Jump;
         public InputAction @Movement => m_Wrapper.m_PlayerMovement_Movement;
+        public InputAction @Ducking => m_Wrapper.m_PlayerMovement_Ducking;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -342,6 +375,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @Movement.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnMovement;
                 @Movement.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnMovement;
                 @Movement.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnMovement;
+                @Ducking.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnDucking;
+                @Ducking.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnDucking;
+                @Ducking.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnDucking;
             }
             m_Wrapper.m_PlayerMovementActionsCallbackInterface = instance;
             if (instance != null)
@@ -352,6 +388,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @Movement.started += instance.OnMovement;
                 @Movement.performed += instance.OnMovement;
                 @Movement.canceled += instance.OnMovement;
+                @Ducking.started += instance.OnDucking;
+                @Ducking.performed += instance.OnDucking;
+                @Ducking.canceled += instance.OnDucking;
             }
         }
     }
@@ -378,5 +417,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
     {
         void OnJump(InputAction.CallbackContext context);
         void OnMovement(InputAction.CallbackContext context);
+        void OnDucking(InputAction.CallbackContext context);
     }
 }

@@ -480,6 +480,11 @@ Transform:
   m_Father: {fileID: 529284608}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: -7.126, y: 0, z: 0}
+--- !u!95 &29103095 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: be2c436a936ec4f4f984961282d07ac7, type: 3}
+  m_PrefabInstance: {fileID: 354007015}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &53089756
 GameObject:
   m_ObjectHideFlags: 0
@@ -587,6 +592,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 958120871}
+  - {fileID: 1297124637}
   m_Father: {fileID: 946907866}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2619,6 +2625,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 457509df5a6b2764bb9a1cdc659ba668, type: 2}
+    - target: {fileID: 5866666021909216657, guid: be2c436a936ec4f4f984961282d07ac7, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5869553146772215559, guid: be2c436a936ec4f4f984961282d07ac7, type: 3}
       propertyPath: m_Layer
       value: 0
@@ -4697,8 +4707,11 @@ MonoBehaviour:
   verticalSpeed: 15
   maximumSpeed: 10
   fallVelocity: 4
+  animator: {fileID: 29103095}
   jumpForce: 8
   fallMultiplier: 4
+  standingCollider: {fileID: 958120872}
+  duckingCollider: {fileID: 1297124636}
 --- !u!114 &946907869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4756,6 +4769,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: ecd762c5-6cc8-44c1-824f-f420b11c3d0f
     m_ActionName: PlayerMovement/VerticalMovement[/Keyboard/a,/Keyboard/d,/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 946907868}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: OnPressDuck
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 72df59a4-cd5a-4abc-af3b-85298d1e3b65
+    m_ActionName: PlayerMovement/New action
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerMovement
@@ -4969,7 +4998,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.09828972, y: 0.0000000042807664, z: -4.2280257e-10, w: 0.9951579}
+  m_LocalRotation: {x: 0.09828972, y: -0.0000000042807664, z: 4.2280257e-10, w: 0.9951579}
   m_LocalPosition: {x: 0, y: 2.42, z: -3.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -5546,6 +5575,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1219938340}
   m_CullTransparentMesh: 1
+--- !u!1 &1297124635
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1297124637}
+  - component: {fileID: 1297124636}
+  m_Layer: 0
+  m_Name: Ducking
+  m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!136 &1297124636
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297124635}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  m_Radius: 0.3
+  m_Height: 1.1098013
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.7049006, z: 0}
+--- !u!4 &1297124637
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297124635}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 119448284}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1349420080
 GameObject:
   m_ObjectHideFlags: 0
@@ -5879,7 +5953,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1437640832}
-  m_LocalRotation: {x: 0.09828972, y: 0.0000000042807664, z: -4.2280257e-10, w: 0.9951579}
+  m_LocalRotation: {x: 0.09828972, y: -0.0000000042807664, z: 4.2280257e-10, w: 0.9951579}
   m_LocalPosition: {x: 0, y: 2.42, z: -3.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

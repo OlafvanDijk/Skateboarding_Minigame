@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-[CreateAssetMenu(fileName = "Level_#", menuName = "Levels/Create Level", order = 1)]
+[CreateAssetMenu(fileName = "Level_#", menuName = "Levels/Create Level", order = 2)]
 public class Level : ScriptableObject
 {
     [Tooltip("List of platforms to spawn.")]

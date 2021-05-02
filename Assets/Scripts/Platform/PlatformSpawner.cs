@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlatformSpawner : MonoBehaviour
 {
     //TODO Replace this with a level list and level index PlayerPref
-    [Tooltip("Scriptable object of the current level.")]
-    [SerializeField] private Level level;
+    [Tooltip("Scriptable object containing the possible levels.")]
+    [SerializeField] private LevelList levelList;
 
     private List<Platform> platforms;
 
@@ -15,6 +15,8 @@ public class PlatformSpawner : MonoBehaviour
     /// </summary>
     private void Awake()
     {
+        Level level = GetCurrentLevel();
+
         platforms = level.GetList();
         SpawnPlatforms();
     }
@@ -42,5 +44,22 @@ public class PlatformSpawner : MonoBehaviour
                 platformObject.transform.localPosition += new Vector3(0, 0, newZPos);
             }
         }
+    }
+
+    private Level GetCurrentLevel()
+    {
+        if (levelList.levels == null || levelList.levels.Count <= 0)
+        {
+            Debug.LogError("No levels have been found!", this.gameObject);
+            Destroy(this);
+        }
+
+        int index = PlayerPrefs.GetInt("LevelIndex");
+        if (levelList.levels.Count <= index)
+        {
+            index = levelList.levels.Count - 1;
+        }
+
+        return levelList.levels[index];
     }
 }

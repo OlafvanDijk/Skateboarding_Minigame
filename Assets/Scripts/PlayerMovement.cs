@@ -40,14 +40,6 @@ public class PlayerMovement : MonoBehaviour
     }
 
     /// <summary>
-    /// Start moving after a small delay.
-    /// </summary>
-    private void Start()
-    {
-        StartCoroutine(DelayedStart());
-    }
-
-    /// <summary>
     /// Moves the player forward and horizontally
     /// Also quickens the fall during a jump
     /// </summary>
@@ -98,21 +90,23 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Set the isJumping boolean. This method is currently used by the GroundHandler
+    /// </summary>
+    /// <param name="isJumping">Is the player currently in a jump.</param>
     public void SetIsJumping(bool isJumping)
     {
         this.isJumping = isJumping;
     }
-    #endregion
 
-    #region IEnumerators
     /// <summary>
-    /// Set move to true after a delay.
+    /// Set the move boolean to the given boolean.
+    /// Changes if the player can move or not
     /// </summary>
-    /// <returns></returns>
-    private IEnumerator DelayedStart()
+    /// <param name="canMove">Should the player be able to move</param>
+    public void CanPlayerMove(bool canMove)
     {
-        yield return new WaitForSecondsRealtime(1f);
-        move = true;
+        move = canMove;
     }
     #endregion
 }

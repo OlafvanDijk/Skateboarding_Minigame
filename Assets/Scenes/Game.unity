@@ -5682,7 +5682,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdf719a22933e4a478a18e74528ed73e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startDelay: 2
+  startDelay: 1.2
   StartGame:
     m_PersistentCalls:
       m_Calls:
@@ -6257,7 +6257,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17906
+  m_Name: pb_Mesh34578
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

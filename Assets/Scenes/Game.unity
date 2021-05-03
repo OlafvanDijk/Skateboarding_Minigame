@@ -4785,6 +4785,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 72df59a4-cd5a-4abc-af3b-85298d1e3b65
     m_ActionName: PlayerMovement/New action
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1349420085}
+        m_TargetAssemblyTypeName: QuitGame, Assembly-CSharp
+        m_MethodName: OnQuitGame
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 4b701278-4bb7-4efe-968a-7619e1f5f161
+    m_ActionName: PlayerMovement/Quit[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerMovement
@@ -4998,7 +5014,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.098289706, y: 0.000000004280765, z: -4.2280243e-10, w: 0.9951579}
+  m_LocalRotation: {x: 0.098289706, y: -0.0000000042807673, z: 4.2280263e-10, w: 0.9951579}
   m_LocalPosition: {x: 0, y: 2.42, z: -3.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -5632,6 +5648,7 @@ GameObject:
   - component: {fileID: 1349420082}
   - component: {fileID: 1349420081}
   - component: {fileID: 1349420084}
+  - component: {fileID: 1349420085}
   m_Layer: 0
   m_Name: GameState
   m_TagString: Untagged
@@ -5665,7 +5682,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdf719a22933e4a478a18e74528ed73e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startDelay: 1
+  startDelay: 2
   StartGame:
     m_PersistentCalls:
       m_Calls:
@@ -5799,6 +5816,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   finishUI: {fileID: 450176357}
   nextLevelButton: {fileID: 1062118797}
+--- !u!114 &1349420085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349420080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a31ed8e635034644af7928f408bde22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1397683629
 GameObject:
   m_ObjectHideFlags: 0
@@ -5953,7 +5982,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1437640832}
-  m_LocalRotation: {x: 0.098289706, y: 0.000000004280765, z: -4.2280243e-10, w: 0.9951579}
+  m_LocalRotation: {x: 0.098289706, y: -0.0000000042807673, z: 4.2280263e-10, w: 0.9951579}
   m_LocalPosition: {x: 0, y: 2.42, z: -3.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
